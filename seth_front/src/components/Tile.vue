@@ -8,7 +8,7 @@
     hover
   >
     <v-card-title class="justify-center">
-      {{ title }}
+      <span style="color: rgb(197, 147, 92)">{{ title }}</span>
     </v-card-title>
   </v-card>
 </template>

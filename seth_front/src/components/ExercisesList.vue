@@ -10,10 +10,6 @@
       >
         <v-card-title class="list-item">
           <span style="color: rgb(197, 147, 92)">{{ item.name }}</span>
-          <v-spacer></v-spacer>
-          <v-icon v-if="item.favorite === 1" color="cyan">
-            mdi-circle-small
-          </v-icon>
         </v-card-title>
       </v-card>
     </v-list-item>
@@ -38,8 +34,5 @@ export default Vue.extend({
 <style lang="scss">
 .list-item {
   font-size: 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 </style>

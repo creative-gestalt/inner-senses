@@ -3,8 +3,10 @@
     <exercises-list @itemClicked="handleClick" />
     <v-bottom-sheet v-model="bottomSheet">
       <v-card class="pt-5" height="80vh" color="grey darken-4">
-        <v-card-text>
-          <span style="color: rgb(197, 147, 92)">{{ compDescription }}</span>
+        <v-card-text
+          style="color: rgb(197, 147, 92)"
+          v-html="compDescription.replaceAll('\r\n\r\n', '<br /><br />')"
+        >
         </v-card-text>
       </v-card>
     </v-bottom-sheet>
