@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  seth_front:
+    build: ./seth_front
+    container_name: seth_front
+    working_dir: /seth_front
+    ports:
+      - "8085:8080"
+    command: serve -s dist -l 8080
+    restart: unless-stopped
+
+#  seth_back:
+#    build: ./seth_back
+#    container_name: seth_back
+#    working_dir: /seth_back
+#    ports:
+#      - "3005:3000"
+#    command: node dist/main
+#    restart: unless-stopped

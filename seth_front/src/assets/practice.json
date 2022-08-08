@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Practice Element 2",
+    "direction": "Some Directions",
+    "book": "The Unknown Reality Volume 1",
+    "favorite": 0
+  },
+  {
+    "id": 2,
+    "name": "Practice Element 3",
+    "direction": "Some Directions",
+    "book": "The Unknown Reality Volume 1",
+    "favorite": 0
+  },
+  {
+    "id": 3,
+    "name": "Practice Element 4",
+    "direction": "Some Directions",
+    "book": "The Unknown Reality Volume 1",
+    "favorite": 1
+  },
+  {
+    "id": 4,
+    "name": "Practice Element 9",
+    "direction": "Some Directions",
+    "book": "The Unknown Reality Volume 2",
+    "favorite": 1
+  }
+]
