@@ -9,7 +9,12 @@
         hover
       >
         <v-card-title class="list-item">
-          <span style="color: rgb(197, 147, 92)">{{ item.name }}</span>
+          <span style="color: rgb(197, 147, 92)">
+            {{ item.name }}
+            <span style="color: rgb(36, 164, 255)">{{
+              item.favorite ? "●" : ""
+            }}</span>
+          </span>
         </v-card-title>
       </v-card>
     </v-list-item>
