@@ -1,31 +1,16 @@
-import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
+/**
+ * router/index.ts
+ *
+ * Automatic routes for `./src/pages/*.vue`
+ */
 
-Vue.use(VueRouter);
+// Composables
+import { createRouter, createWebHistory } from 'vue-router/auto'
+import { setupLayouts } from 'virtual:generated-layouts'
 
-const routes: Array<RouteConfig> = [
-  {
-    path: "/",
-    redirect: "/home",
-  },
-  {
-    path: "/home",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/exercises",
-    name: "exercises",
-    component: () =>
-      import(/* webpackChunkName: "exercises" */ "../views/ExercisesView.vue"),
-  },
-];
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  extendRoutes: setupLayouts,
+})
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
-
-export default router;
+export default router

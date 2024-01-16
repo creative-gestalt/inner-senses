@@ -1,43 +1,39 @@
 <template>
-  <v-list>
-    <v-list-item v-for="item of exercises" :key="item.name" class="my-2">
+  <v-data-iterator :items="exercises" :page="page">
+    <template
+      v-for="item of exercises"
+      :key="item.name"
+      >
       <v-card
-        color="grey darken-4"
-        width="100%"
-        @click="$emit('itemClicked', item.direction)"
-        link
-        hover
+        class="my-2 ma-auto"
+        width="90%"
+        @click="$emit('itemClicked', { description: item.direction, title: item.name })"
+        variant="tonal"
       >
         <v-card-title class="list-item">
           <span style="color: rgb(197, 147, 92)">
             {{ item.name }}
             <span style="color: rgb(36, 164, 255)">{{
-              item.favorite ? "●" : ""
-            }}</span>
+                item.favorite ? "●" : ""
+              }}</span>
           </span>
         </v-card-title>
       </v-card>
-    </v-list-item>
-  </v-list>
+    </template>
+  </v-data-iterator>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-import { mapState } from "pinia";
-import { useStore } from "@/stores/main";
+<script lang="ts" setup>
+import {storeToRefs} from "pinia";
+import {useAppStore} from "@/store/app";
+import {ref} from "vue";
 
-export default Vue.extend({
-  name: "ExercisesList",
-  data: () => ({
-    //
-  }),
-  computed: {
-    ...mapState(useStore, { exercises: "getExercises" }),
-  },
-});
+const appStore = useAppStore();
+const { exercises } = storeToRefs(appStore);
+const page = ref(1);
 </script>
 <style lang="scss">
 .list-item {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 </style>

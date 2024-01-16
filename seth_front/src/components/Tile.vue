@@ -3,37 +3,31 @@
     width="200"
     height="200"
     :class="`d-flex justify-center ${compSide}`"
-    :to="to"
-    :img="compImg"
-    hover
+    :to="props.to"
+    :image="compImg"
+    link
   >
     <v-card-title class="justify-center">
-      <span style="color: rgb(197, 147, 92)">{{ title }}</span>
+      <span style="color: rgb(197, 147, 92)">{{ props.title }}</span>
     </v-card-title>
   </v-card>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script lang="ts" setup>
+import {computed} from "vue";
 
-export default Vue.extend({
-  name: "TileComponent",
-  props: {
-    title: String,
-    side: String,
-    to: String,
-    img: String,
-  },
-  data: () => ({
-    //
-  }),
-  computed: {
-    compImg(): string {
-      return require(`@/assets/tiles/${this.img}.png`);
-    },
-    compSide(): string {
-      return this.$props.side === "left" ? "float-start" : "float-end";
-    },
-  },
+const props = defineProps<{
+  title: string;
+  side: string;
+  to: string;
+  img: string;
+}>();
+
+const compImg = computed(() => {
+  return new URL(`/src/assets/tiles/${props.img}.png`, import.meta.url).href;
+});
+
+const compSide = computed(() => {
+  return props.side === "left" ? "float-start" : "float-end";
 });
 </script>
